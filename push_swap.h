@@ -8,6 +8,8 @@
 
 #define TRUE 1
 #define FALSE 0
+#define UP 1
+#define DOWN 0
 
 typedef struct s_stack{
 	int content;
@@ -38,5 +40,16 @@ void		ft_push(t_stack **from, t_stack **to);
 void	    pre_execute_operation(char *operation, t_stack **a, t_stack **b, t_op **op);
 int			max(t_stack *stack);
 int			min(t_stack *stack);
+int			is_duplicate(t_stack *stack);
+void		sort_three(t_stack **a, t_stack **b, t_op **op);
+void		sort(t_stack **a, t_stack **b, t_op **op);
+void		sort_four(t_stack **a, t_stack **b, t_op **op);
+int			min_element(t_stack *stack);
+void		sort_five(t_stack **a, t_stack **b, t_op **op);
+void		print_op(t_op	*op);
+// int			which_better(t_stack *stack, int index);
+// int			get_index(t_stack *stack, int   key);
+int     right_index(t_stack *stack, int key);
+
 
 #endif

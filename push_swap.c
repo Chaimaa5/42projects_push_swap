@@ -53,18 +53,22 @@ t_stack *parser(char **argv)
 int main(int argc, char **argv)
 {
     t_stack *a;
-    // t_stack *b;
-    // t_op    *op;
+    t_stack *b;
+    t_op    *op;
 
-    // b = NULL;
-    // op = NULL;
+    b = NULL;
+    op = NULL;
     if (argc == 1)
         return (0);
     a = parser(argv);
     // print_stack(a, "stack before\n");
     // sort(&a, &b, &op);
-    printf(">> %d\n", min(a));
+    // printf(">> %d\n", is_duplicate(a));
     // print_stack(a, "stack after\n");
+    // printf("%d\n", min_element(a));
+    // print_op(op);
+
+    printf(">> %d\n",right_index(a, a->content));
 
     return (0);
 }

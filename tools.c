@@ -154,3 +154,11 @@ void    pre_execute_operation(char *operation, t_stack **a, t_stack **b, t_op **
     ft_lstadd_back_op(op, ft_lstnew_op(ft_strdup(operation)));
 }
 
+void	print_op(t_op	*op)
+{
+	    while (op)
+    {
+        printf("%s\n", op->operation);
+        op = op->next;
+    }
+}
