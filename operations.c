@@ -1,24 +1,18 @@
-//sa sa (swap a): Swap the first 2 elements at the top of stack a.
-//Do nothing if there is only one or no elements.
-
-// pa (push a): Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty.
-// pb (push b): Take the first element at the top of a and put it at the top of b.
-// Do nothing if a is empty.
-// ra (rotate a): Shift up all elements of stack a by 1.
-// The first element becomes the last one.
-// rb (rotate b): Shift up all elements of stack b by 1.
-// The first element becomes the last one.
-// rr : ra and rb at the same time.
-// rra (reverse rotate a): Shift down all elements of stack a by 1.
-// The last element becomes the first one.
-// rrb (reverse rotate b): Shift down all elements of stack b by 1.
-// The last element becomes the first one.
-// rrr : rra and rrb at the same time.
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   operations.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: cel-mhan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/03 13:24:12 by cel-mhan          #+#    #+#             */
+/*   Updated: 2022/03/03 13:24:14 by cel-mhan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_swap(t_stack **stack)
+void	ft_swap(t_stack **stack)
 {
 	int	i;
 	int	j;

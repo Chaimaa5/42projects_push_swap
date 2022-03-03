@@ -1,7 +1,19 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cel-mhan <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/03/03 13:40:07 by cel-mhan          #+#    #+#              #
+#    Updated: 2022/03/03 13:40:09 by cel-mhan         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror 
-SRCS = push_swap.c linked_list_tools.c parsing_tools.c log_tools.c operations.c tools.c small_sorter.c big_sorter.c
+SRCS = push_swap.c linked_list_tools.c parsing_tools.c log_tools.c operations.c tools.c sorter.c  chunker.c op_tools.c sort.c find.c checker.c
 	
 OBJS = $(SRCS:.c=.o)
 
