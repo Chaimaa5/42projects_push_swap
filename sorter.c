@@ -65,13 +65,10 @@ void	sort_five(t_stack **a, t_stack **b, t_op **op)
 
 void	sort_whatever(t_stack **a, t_stack **b, t_op **op)
 {
-	while (get_chunk_size(*a))
-	{
+	if (!is_duplicate(*a))
 		chunker(a, b, op);
-		print_stack(*a, "chunk");
-	}
-	print_stack(*a, "last chunk");
-	// sort(a, b, op);
+	else
+		log_global_error("Error: duplicated element");
 }
 
 void	sort(t_stack **a, t_stack **b, t_op **op)

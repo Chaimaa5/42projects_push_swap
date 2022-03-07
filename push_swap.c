@@ -26,10 +26,23 @@ int main(int argc, char **argv)
     a = parser(argv);
     // print_stack(a, "stack before\n");
     sort(&a, &b, &op);
-    // printf(">> %d\n", is_duplicate(a));
-    // print_stack(a, "stack after\n");
+		// printf("index ; %d\n", get_index(&a, a->content));
+		// printf("which better ; %d\n", which_better(a, get_index(&a, a->content)));
+
     // printf("%d\n", min_element(a));
     // print_op(op);
     // printf(">> %d\n",right_index(a, a->content));
+    // int *tab = chunk_content(a, 4);
+    // for (size_t i = 0; i < 4; i++)
+    // {
+    //   printf("* %d\n", tab[i]);
+    // }
+    
+
+
+// printf("* %d\n", get_index(a, 99));
+    print_stack(b, "stack b after\n");
+    print_stack(a, "stack a after\n");
+
     return (0);
 }

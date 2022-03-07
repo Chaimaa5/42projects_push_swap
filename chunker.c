@@ -10,6 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// big_sort: This algorithm is designed for larger amount of integers. 
+// This algorithm splits stack A into smaller chunks which are pushed to stack B:
+//  <= 100 are splitted into 5 chunks and > 100 integers into 10 chunks. Chunks with smallest numbers are pushed first to stack B. 
+//  I used sorted array of integers to help me to split stack A. 
+//  When all of the numbers are in the stack B then I can start to search numbers from biggest number and push them back to stack A. 
+//  This continues until B is empty and A is sorted. 
+//  For optimizing I created a function called shortest way to check is it more effective to use rb or rrb to get that number on top of the stack B.
+
 #include "push_swap.h"
 
 int	get_chunk_size(t_stack *stack)
@@ -19,12 +27,10 @@ int	get_chunk_size(t_stack *stack)
 	size = ft_lstsize(stack);
 	if (size <= 5)
 		return (0);
-	if (size > 200)
-		return (100);
-	else if (size > 100)
-		return (70);
-	else if (size > 60)
-		return (size / 3);
+	else if (size > 5 && size <= 20)
+		return (5);
+	else if (size > 20 && size <= 100)
+		return (10);
 	else
 		return (15);
 }
@@ -36,14 +42,13 @@ int	*chunk_content(t_stack *stack, int size)
 	t_stack	*copy;
 
 	i = 0;
-	copy = NULL;
+	copy = stack;
 	chunk = malloc(size * 4);
 	while (stack)
 	{
-		if (right_index(copy, stack->content) < size)
+		if (right_index(copy, stack->content) <= size)
 		{
 			chunk[i] = stack->content;
-			printf(">> %d \n", chunk[i]);
 			i++;
 		}
 		stack = stack->next;
@@ -82,26 +87,23 @@ int	exists_in_chunk(int *chunk, int key, int size)
 
 void	chunker(t_stack **a, t_stack **b, t_op **op)
 {
-	int		chunk_size;
 	int		*chunk;
-	t_stack	*tmp;
+	char	*cmd;
+	int		chunk_size;
+	int		i;
 
-	chunk_size = get_chunk_size(*a);
-	chunk = chunk_content(*a, chunk_size);
-	tmp = *a;
-	while (tmp)
+	while ((chunk_size = get_chunk_size((*a))))
 	{
-		if (exists_in_chunk(chunk, (*a)->content, chunk_size))
+		chunk = chunk_content((*a), chunk_size);
+		i = 0;
+		while (i < chunk_size)
 		{
-			if (which_better(*a, get_index(*a, (*a)->content) == UP))
-				while (get_index(*a, (*a)->content) != 1)
-					pre_execute("ra", a, b, op);
-			else
-				while (get_index(*a, (*a)->content) != 1)
-					pre_execute("rra", a, b, op);
+			cmd = which_better((*a), get_index((*a), chunk[i])) == UP ? ft_strdup("ra") : ft_strdup("rra");
+			while (get_index((*a), chunk[i]) != 1)
+				pre_execute(cmd, a, b, op);
 			pre_execute("pb", a, b, op);
+			i++;
 		}
-		tmp = tmp->next;
+		free(chunk);
 	}
 }
-

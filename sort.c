@@ -61,6 +61,7 @@ void	pre_execute(char *operation, t_stack **a, t_stack **b, t_op **op)
 
 int	which_better(t_stack *stack, int index)
 {
+
 	if (ft_lstsize(stack) / 2 >= index)
 		return (UP);
 	else
