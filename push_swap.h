@@ -56,6 +56,7 @@ void	sort_three(t_stack **a, t_stack **b, t_op **op);
 void	sort(t_stack **a, t_stack **b, t_op **op);
 void	sort_four(t_stack **a, t_stack **b, t_op **op);
 int		min_element(t_stack *stack);
+int	max_element(t_stack *stack);
 void	sort_five(t_stack **a, t_stack **b, t_op **op);
 void	print_op(t_op	*op);
 int		which_better(t_stack *stack, int index);
@@ -78,5 +79,6 @@ int		*chunk_content(t_stack *stack, int size);
 int		get_number(t_stack *stack, int index);
 int		exists_in_chunk(int *chunk, int key, int size);
 void	chunker(t_stack **a, t_stack **b, t_op **op);
+void    final_sort(t_stack **a, t_stack **b, t_op **op);
 
 #endif

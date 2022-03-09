@@ -28,11 +28,11 @@ int	get_chunk_size(t_stack *stack)
 	if (size <= 5)
 		return (0);
 	else if (size > 5 && size <= 20)
-		return (5);
+		return (2);
 	else if (size > 20 && size <= 100)
-		return (10);
+		return (30);
 	else
-		return (15);
+		return (100);
 }
 
 int	*chunk_content(t_stack *stack, int size)
@@ -106,4 +106,5 @@ void	chunker(t_stack **a, t_stack **b, t_op **op)
 		}
 		free(chunk);
 	}
+	final_sort(a, b, op);
 }

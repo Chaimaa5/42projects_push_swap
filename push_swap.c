@@ -12,7 +12,18 @@
 
 #include "push_swap.h"
 
+void    final_sort(t_stack **a, t_stack **b, t_op **op)
+{
+    char    *cmd;
 
+    while(*b)
+    {
+        cmd = which_better((*b), get_index((*b), (*b)->content)) == UP ? ft_strdup("rb") : ft_strdup("rrb");
+        while (max(*b) != 1)
+                pre_execute(cmd, a, b, op);
+        pre_execute("pa", a, b, op);
+    }
+}
 int main(int argc, char **argv)
 {
     t_stack *a;
@@ -24,25 +35,9 @@ int main(int argc, char **argv)
     if (argc == 1)
         return (0);
     a = parser(argv);
-    // print_stack(a, "stack before\n");
     sort(&a, &b, &op);
-		// printf("index ; %d\n", get_index(&a, a->content));
-		// printf("which better ; %d\n", which_better(a, get_index(&a, a->content)));
-
-    // printf("%d\n", min_element(a));
-    // print_op(op);
-    // printf(">> %d\n",right_index(a, a->content));
-    // int *tab = chunk_content(a, 4);
-    // for (size_t i = 0; i < 4; i++)
-    // {
-    //   printf("* %d\n", tab[i]);
-    // }
-    
-
-
-// printf("* %d\n", get_index(a, 99));
-    print_stack(b, "stack b after\n");
-    print_stack(a, "stack a after\n");
-
+    print_op(op);
+    print_stack(a, "stack");
     return (0);
 }
+

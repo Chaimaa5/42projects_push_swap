@@ -75,6 +75,27 @@ int	min_element(t_stack *stack)
 	return (min);
 }
 
+int	max_element(t_stack *stack)
+{
+	int	index;
+	int	min;
+	int	i;
+
+	i = 1;
+	min = stack->content;
+	while (stack)
+	{
+		if (min <= stack->content)
+		{
+			min = stack->content;
+			index = i;
+		}
+		stack = stack->next;
+		i++;
+	}
+	return (min);
+}
+
 int	get_index(t_stack *stack, int key)
 {
 	int	index;
