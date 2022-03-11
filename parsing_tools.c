@@ -69,7 +69,21 @@ void	print_op(t_op	*op)
 {
 	while (op)
 	{
-		printf("%s\n", op->operation);
+		ft_putstr(op->operation);
 		op = op->next;
 	}
+}
+
+void	ft_putstr(char	*str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	write(1, "\n", 1);
+
 }

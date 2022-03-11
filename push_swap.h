@@ -80,5 +80,6 @@ int		get_number(t_stack *stack, int index);
 int		exists_in_chunk(int *chunk, int key, int size);
 void	chunker(t_stack **a, t_stack **b, t_op **op);
 void    final_sort(t_stack **a, t_stack **b, t_op **op);
+void	ft_putstr(char	*str);
 
 #endif

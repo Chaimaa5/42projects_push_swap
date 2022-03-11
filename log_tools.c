@@ -36,7 +36,6 @@ void	print_stack(t_stack *stack, char *str)
         printf("%d\n", stack->content);
         stack = stack->next;
     }
-    printf("****************************\n");
 }
 
 size_t	ft_strlen(char *str)

@@ -12,7 +12,7 @@
 
 NAME = push_swap
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 SRCS = push_swap.c linked_list_tools.c parsing_tools.c log_tools.c operations.c tools.c sorter.c  chunker.c op_tools.c sort.c find.c checker.c
 	
 OBJS = $(SRCS:.c=.o)

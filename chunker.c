@@ -106,5 +106,6 @@ void	chunker(t_stack **a, t_stack **b, t_op **op)
 		}
 		free(chunk);
 	}
+	sort(a, b, op);
 	final_sort(a, b, op);
 }
