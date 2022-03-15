@@ -18,7 +18,7 @@ void    final_sort(t_stack **a, t_stack **b, t_op **op)
 
     while(*b)
     {
-        cmd = which_better((*b), get_index((*b), (*b)->content)) == DOWN ? ft_strdup("rb") : ft_strdup("rrb");
+        cmd = which_better((*b), max(*b)) == DOWN ? ft_strdup("rrb") : ft_strdup("rb");
         while (max(*b) != 1)
                 pre_execute(cmd, a, b, op);
         pre_execute("pa", a, b, op);

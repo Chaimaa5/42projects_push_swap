@@ -27,12 +27,17 @@ int	get_chunk_size(t_stack *stack)
 	size = ft_lstsize(stack);
 	if (size <= 5)
 		return (0);
-	else if (size > 5 && size <= 20)
-		return (2);
-	else if (size > 20 && size <= 100)
+	else if (size <= 60)
+		return (size / 3);
+	else if (size <= 100)
+		return (20);
+	else if (size <= 200)
+		return (25);
+	else if (size <= 350)
 		return (30);
 	else
-		return (100);
+		return (50);
+	
 }
 
 int	*chunk_content(t_stack *stack, int size)
@@ -92,7 +97,7 @@ void	chunker(t_stack **a, t_stack **b, t_op **op)
 	int		chunk_size;
 	int		i;
 
-	while ((chunk_size = get_chunk_size((*a))))
+	while ((chunk_size =  get_chunk_size((*a))) && (ft_lstsize((*a)) >= 5))
 	{
 		chunk = chunk_content((*a), chunk_size);
 		i = 0;
