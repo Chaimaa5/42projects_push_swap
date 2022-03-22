@@ -6,11 +6,11 @@
 /*   By: cel-mhan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:24:31 by cel-mhan          #+#    #+#             */
-/*   Updated: 2022/03/03 13:24:32 by cel-mhan         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:36:51 by cel-mhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static int	spaces(char c)
 {
@@ -47,21 +47,34 @@ int	ft_atoi(const char *str)
 	return (res);
 }
 
-t_stack	*parser(char **argv)
+t_stack	*parser(char **argv, int argc)
 {
 	int		i;
 	t_stack	*stack;
+	char	**tab;
 
 	i = 1;
+
 	stack = NULL;
-	while (argv[i])
+	if (argc == 2)
 	{
-		if (check_number(argv[i]))
-			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(argv[i])));
+		tab = ft_split(argv[1], ' ');
+		i = 0;
+	}
+	else
+		tab = argv;
+	while (tab[i])
+	{
+		if (check_number(tab[i]))
+			ft_lstadd_back(&stack, ft_lstnew(ft_atoi(tab[i])));
 		else
 			log_global_error("Error\n");
 		i++;
 	}
+	if (is_sorted(stack))
+		log_global_error("");
+	if (is_duplicate(stack) )
+		log_global_error("Error\n");
 	return (stack);
 }
 
@@ -85,5 +98,4 @@ void	ft_putstr(char	*str)
 		i++;
 	}
 	write(1, "\n", 1);
-
 }

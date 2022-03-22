@@ -6,11 +6,11 @@
 /*   By: cel-mhan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:24:42 by cel-mhan          #+#    #+#             */
-/*   Updated: 2022/03/03 13:24:43 by cel-mhan         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:41:13 by cel-mhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 void	sort_three(t_stack **a, t_stack **b, t_op **op)
 {
@@ -61,14 +61,6 @@ void	sort_five(t_stack **a, t_stack **b, t_op **op)
 	pre_execute("pb", a, b, op);
 	sort_four(a, b, op);
 	pre_execute("pa", a, b, op);
-}
-
-void	sort_whatever(t_stack **a, t_stack **b, t_op **op)
-{
-	if (!is_duplicate(*a))
-		chunker(a, b, op);
-	else
-		log_global_error("Error: duplicated element");
 }
 
 void	sort(t_stack **a, t_stack **b, t_op **op)

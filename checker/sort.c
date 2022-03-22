@@ -6,11 +6,11 @@
 /*   By: cel-mhan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/03 13:24:46 by cel-mhan          #+#    #+#             */
-/*   Updated: 2022/03/03 13:24:47 by cel-mhan         ###   ########.fr       */
+/*   Updated: 2022/03/15 22:43:04 by cel-mhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "checker.h"
 
 static void	exec_helper(t_stack **a, t_stack **b, char *operation)
 {
@@ -65,4 +65,18 @@ int	which_better(t_stack *stack, int index)
 		return (UP);
 	else
 		return (DOWN);
+}
+
+int	right_index(t_stack *stack, int key)
+{
+	int	index;
+
+	index = 1;
+	while (stack)
+	{
+		if (stack->content < key)
+			index++;
+		stack = stack->next;
+	}
+	return (index);
 }
