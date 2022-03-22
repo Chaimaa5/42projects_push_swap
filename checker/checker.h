@@ -43,6 +43,7 @@ int		is_sorted(t_stack *stack);
 void	ft_swap(t_stack **stack);
 void	ft_push(t_stack **from, t_stack **to);
 void	pre_execute(char *operation, t_stack **a, t_stack **b, t_op **op);
+void	exec_op(t_stack **a, t_stack **b, char *operation);
 int		max(t_stack *stack);
 int		min(t_stack *stack);
 int		is_duplicate(t_stack *stack);

@@ -10,10 +10,11 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+PS_NAME = push_swap
+# CK_NAME = checker
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = push_swap.c linked_list_tools.c parsing_tools.c operations.c sorter.c  chunker.c op_tools.c sort.c find.c checker.c
+SRCS = push_swap.c linked_list_tools.c parsing_tools.c operations.c sorter.c  chunker.c op_tools.c sort.c find.c checker_stack.c checker.c
 LIB = libft.a
 
 OBJS = $(SRCS:.c=.o)
@@ -25,10 +26,10 @@ $(LIB):
 	make -C ../inc/libft
 	cp ../inc/libft/libft.a ./
 
-$(NAME) : $(SRCS) $(LIB)
-		$(CC) $(CFLAGS) $(SRCS) -o ${NAME} $(LIB)
+$(PS_NAME) : $(SRCS) $(LIB)
+		$(CC) $(CFLAGS) $(SRCS) -o ${PS_NAME} $(LIB)
 
-all : $(NAME)
+all : $(PS_NAME) 
 
 clean :
 	rm -f ${OBJS}
