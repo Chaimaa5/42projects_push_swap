@@ -12,33 +12,10 @@
 
 #include "checker.h"
 
-void	final_sort(t_stack **a, t_stack **b, t_op **op)
-{
-	char	*cmd;
-
-	while (*b)
-	{
-		if (which_better((*b), max(*b)) == DOWN)
-			cmd = ft_strdup("rrb");
-		else
-			cmd = ft_strdup("rb");
-		while (max(*b) != 1)
-			pre_execute(cmd, a, b, op);
-		pre_execute("pa", a, b, op);
-		free(cmd);
-	}
-}
-
-
-void	log_global_error(char *err)
-{
-	write(2, err, ft_strlen(err));
-	exit(1);
-}
 
 void	clear(t_stack **a, t_stack **b, t_op **op)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	t_op	*swp;
 
 	while (*a)
@@ -62,7 +39,7 @@ void	clear(t_stack **a, t_stack **b, t_op **op)
 	}
 }
 
-int		main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;

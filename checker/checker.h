@@ -14,7 +14,10 @@
 # define CHECKER_H
 
 # include "../inc/libft/libft.h"
+# include "../gnl/get_next_line.h"
 
+# include <unistd.h>
+# include <fcntl.h>
 # define TRUE 1
 # define FALSE 0
 # define UP 1

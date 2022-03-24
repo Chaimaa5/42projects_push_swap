@@ -1,6 +1,6 @@
-#include "checker.h"
+ #include "checker.h"
 
-int		push_swap(int argc, char **argv)
+void	push_swap(int ac, char **av)
 {
 	t_stack	*a;
 	t_stack	*b;
@@ -8,29 +8,42 @@ int		push_swap(int argc, char **argv)
 
 	b = NULL;
 	op = NULL;
-	if (argc == 1)
-		return (0);
-	a = parser(argv, argc);
+	a = parser(av, ac);
 	sort(&a, &b, &op);
-	print_op(op);
-	clear(&a, &b, &op);
-	return (0);
+    print_op(op);
 }
 
-int main(int argc, char **argv)
+void	checker_result(t_stack	*stack)
 {
-    char    *op;
+	if (is_sorted(stack))
+        ft_putstr("OK");
+    else
+        ft_putstr("KO");
+}
+
+int main(int ac, char **av)
+{
     t_stack *a;
     t_stack *b;
+    char *op[10000];
+    int i;
 
-    
-    while (1)
+    b = NULL;
+    i = 0;
+	if (ac == 1)
+		return (0);
+    a = parser(av, ac);
+    while ((op[i] = get_next_line(0)))
     {
-        op = get_next_line(STDOUT_FILENO);
-        exec_op(&a, &b, op);
+        op[i][ft_strlen(op[i]) - 1] = '\0';
+        i++;
     }
-    if (is_sorted(a))
-        ft_putstr("OK\n");
-    else
-        ft_putstr("KO\n");
+	i = 0;
+    while(op[i])
+    {
+		exec_op(&a, &b, op[i]);
+		i++;
+	}
+	checker_result(a);
+	return (0);
 }

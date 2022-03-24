@@ -54,7 +54,6 @@ t_stack	*parser(char **argv, int argc)
 	char	**tab;
 
 	i = 1;
-
 	stack = NULL;
 	if (argc == 2)
 	{
@@ -73,7 +72,7 @@ t_stack	*parser(char **argv, int argc)
 	}
 	if (is_sorted(stack))
 		log_global_error("");
-	if (is_duplicate(stack) )
+	if (is_duplicate(stack))
 		log_global_error("Error\n");
 	return (stack);
 }
@@ -98,4 +97,28 @@ void	ft_putstr(char	*str)
 		i++;
 	}
 	write(1, "\n", 1);
+}
+
+
+void	final_sort(t_stack **a, t_stack **b, t_op **op)
+{
+	char	*cmd;
+
+	while (*b)
+	{
+		if (which_better((*b), max(*b)) == DOWN)
+			cmd = ft_strdup("rrb");
+		else
+			cmd = ft_strdup("rb");
+		while (max(*b) != 1)
+			pre_execute(cmd, a, b, op);
+		pre_execute("pa", a, b, op);
+		free(cmd);
+	}
+}
+
+void	log_global_error(char *err)
+{
+	write(2, err, ft_strlen(err));
+	exit(1);
 }
