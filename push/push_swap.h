@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../inc/libft/libft.h"
+# include "../inc/gnl/get_next_line.h"
 
 # define TRUE 1
 # define FALSE 0
@@ -72,4 +73,7 @@ int		exists_in_chunk(int *chunk, int key, int size);
 void	final_sort(t_stack **a, t_stack **b, t_op **op);
 void	ft_putstr(char	*str);
 void	sort_whatever(t_stack **a, t_stack **b, t_op **op);
+void	check_error(t_stack *stack);
+char	*easy(t_stack **a, int chunk);
+void	exec_op(t_stack **a, t_stack **b, char *operation);
 #endif

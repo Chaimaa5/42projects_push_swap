@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "checker.h"
+#include "push_swap.h"
 
 int	is_duplicate(t_stack *stack)
 {
@@ -67,4 +67,18 @@ int	check_number(char *num)
 	else
 		return (FALSE);
 	return (TRUE);
+}
+
+void	log_global_error(char *err)
+{
+	write(2, err, ft_strlen(err));
+	exit(1);
+}
+
+void	check_error(t_stack *stack)
+{
+	if (is_sorted(stack))
+		log_global_error("");
+	if (is_duplicate(stack))
+		log_global_error("Error\n");
 }

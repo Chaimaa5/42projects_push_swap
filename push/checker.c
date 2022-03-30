@@ -5,66 +5,44 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: cel-mhan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/03 13:23:03 by cel-mhan          #+#    #+#             */
-/*   Updated: 2022/03/03 13:23:05 by cel-mhan         ###   ########.fr       */
+/*   Created: 2022/03/29 22:03:33 by cel-mhan          #+#    #+#             */
+/*   Updated: 2022/03/30 21:14:35 by cel-mhan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	is_duplicate(t_stack *stack)
+void	checker_result(t_stack	*stack)
 {
-	int		found;
-	t_stack	*tmp1;
-	t_stack	*tmp2;
-
-	tmp1 = stack;
-	found = 0;
-	while (tmp1)
-	{
-		if (found > 1)
-			return (TRUE);
-		found = 0;
-		tmp2 = stack;
-		while (tmp2)
-		{
-			if (tmp1->content == tmp2->content)
-				found++;
-			tmp2 = tmp2->next;
-		}
-		tmp1 = tmp1->next;
-	}
-	return (FALSE);
-}
-
-int	is_sorted(t_stack *stack)
-{
-	while (stack->next)
-	{
-		if (stack->content < stack->next->content)
-			stack = stack->next;
-		else
-			return (FALSE);
-	}
-	return (TRUE);
-}
-
-int	check_number(char *num)
-{
-	int	i;
-
-	i = 1;
-	if (num[0] == '-' || num[0] == '+' || ft_isdigit(num[0]))
-	{
-		while (num[i])
-		{
-			if (ft_isdigit(num[i]))
-				i++;
-			else
-				return (FALSE);
-		}
-	}
+	if (is_sorted(stack))
+		ft_putstr("OK");
 	else
-		return (FALSE);
-	return (TRUE);
+		ft_putstr("KO");
+}
+
+int	main(int ac, char **av)
+{
+	t_stack	*a;
+	t_stack	*b;
+	char	*op[10000];
+	int		i;
+
+	b = NULL;
+	i = 0;
+	if (ac == 1)
+		return (0);
+	a = parser(av, ac);
+	while ((op[i] = get_next_line(0)))
+	{
+		op[i][ft_strlen(op[i]) - 1] = '\0';
+		i++;
+	}
+	i = 0;
+	while (op[i])
+	{
+		exec_op(&a, &b, op[i]);
+		i++;
+	}
+	checker_result(a);
+	return (0);
 }

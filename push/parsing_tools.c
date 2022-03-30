@@ -54,7 +54,6 @@ t_stack	*parser(char **argv, int argc)
 	char	**tab;
 
 	i = 1;
-
 	stack = NULL;
 	if (argc == 2)
 	{
@@ -71,10 +70,7 @@ t_stack	*parser(char **argv, int argc)
 			log_global_error("Error\n");
 		i++;
 	}
-	if (is_sorted(stack))
-		log_global_error("");
-	if (is_duplicate(stack) )
-		log_global_error("Error\n");
+	check_error(stack);
 	return (stack);
 }
 
