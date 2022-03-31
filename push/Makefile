@@ -14,7 +14,7 @@ CK_NAME = checker
 PS_NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRCS = checker.c  linked_list_tools.c parsing_tools.c operations.c sorter.c  chunker.c op_tools.c sort.c find.c  error_check.c ../inc/gnl/get_next_line.c ../inc/gnl/get_next_line_utils.c small_sort.c
+SRCS = checker.c linked_list_tools.c parsing_tools.c operations.c sorter.c  chunker.c op_tools.c sort.c find.c  error_check.c ../inc/gnl/get_next_line.c ../inc/gnl/get_next_line_utils.c small_sort.c
 SRCP = push_swap.c linked_list_tools.c parsing_tools.c operations.c sorter.c  chunker.c op_tools.c sort.c find.c error_check.c small_sort.c
 LIB = libft.a
 
@@ -22,6 +22,9 @@ OBJS = $(SRCS:.c=.o)
 
 %.o : %.c
 	   $(CC) $(CFLAGS) $< -c
+
+$(PS_NAME) : $(SRCP) $(LIB)
+		$(CC) $(CFLAGS) $(SRCP) -o ${PS_NAME} $(LIB)
 
 $(LIB):
 	make -C ../inc/libft
@@ -31,8 +34,7 @@ $(LIB):
 $(CK_NAME) : $(SRCS) $(LIB)
 		$(CC) $(CFLAGS) $(SRCS) -o ${CK_NAME} $(LIB)
 
-$(PS_NAME) : $(SRCP) $(LIB)
-		$(CC) $(CFLAGS) $(SRCP) -o ${PS_NAME} $(LIB)
+
 
 all : $(CK_NAME) $(PS_NAME)
 
