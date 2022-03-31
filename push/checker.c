@@ -32,10 +32,12 @@ int	main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	a = parser(av, ac);
-	while ((op[i] = get_next_line(0)))
-	{
+	op[i] = get_next_line(0);
+	while (op[i])
+	{	
 		op[i][ft_strlen(op[i]) - 1] = '\0';
 		i++;
+		op[i] = get_next_line(0);
 	}
 	i = 0;
 	while (op[i])
