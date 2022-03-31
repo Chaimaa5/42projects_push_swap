@@ -40,9 +40,11 @@ all : $(CK_NAME) $(PS_NAME)
 
 clean :
 	rm -f ${OBJS}
+	rm -f ../inc/libft/*.o
 fclean : clean
 	rm -f push_swap
 	rm -f checker
 	rm -f libft.a
+	rm -f ../inc/libft/libft.a 
 
 re : fclean all

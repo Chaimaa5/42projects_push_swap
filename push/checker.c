@@ -20,6 +20,24 @@ void	checker_result(t_stack	*stack)
 		ft_putstr("KO");
 }
 
+void	clear(t_stack **a, t_stack **b)
+{
+	t_stack	*tmp;
+
+	while (*a)
+	{
+		tmp = (*a)->next;
+		free(*a);
+		(*a) = tmp;
+	}
+	while (*b)
+	{
+		tmp = (*b)->next;
+		free(*b);
+		(*b) = tmp;
+	}
+}
+
 int	main(int ac, char **av)
 {
 	t_stack	*a;
@@ -27,7 +45,6 @@ int	main(int ac, char **av)
 	char	*op[10000];
 	int		i;
 
-	b = NULL;
 	i = 0;
 	if (ac == 1)
 		return (0);
@@ -46,5 +63,6 @@ int	main(int ac, char **av)
 		i++;
 	}
 	checker_result(a);
+	clear(&a, &b);
 	return (0);
 }
